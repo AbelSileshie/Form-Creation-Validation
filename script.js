@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("registration-form");
   const feedbackDiv = document.getElementById("form-feedback");
 
+  if (!form || !feedbackDiv) {
+    console.error("Required elements are missing from the DOM.");
+    return;
+  }
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
