@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+function initializeForm() {
   const form = document.getElementById("registration-form");
   const feedbackDiv = document.getElementById("form-feedback");
 
@@ -38,4 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Registration failed!");
     }
   });
-});
+}
+
+document.addEventListener("DOMContentLoaded", initializeForm);
