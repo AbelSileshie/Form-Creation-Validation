@@ -28,13 +28,13 @@ function initializeForm() {
       feedbackDiv.textContent = "Registration successful!";
       feedbackDiv.style.display = "block";
       feedbackDiv.style.color = "#28a745";
-      errorMessages.length = 0;
-      console.log("Registration successful!");
+      errorMessages.length = 0; // Optional: Clear error messages after successful registration
     } else {
       const formattedErrors = errorMessages.join("<br>");
       feedbackDiv.innerHTML = formattedErrors;
       feedbackDiv.style.color = "#dc3545";
       feedbackDiv.style.display = "block";
+      console.log("Registration failed!");
     }
   });
 }
