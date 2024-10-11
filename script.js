@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = form.email.value.trim();
     const errorMessages = [];
     if (!email.includes("@") || !email.includes(".")) {
-      errormessages.push("Please Enter A valid email");
+      errorMessages.push("Please Enter A valid email");
       isvalid = false;
     }
     if (password.length <= 8) {
