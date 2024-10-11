@@ -35,7 +35,6 @@ function initializeForm() {
       feedbackDiv.innerHTML = formattedErrors;
       feedbackDiv.style.color = "#dc3545";
       feedbackDiv.style.display = "block";
-      console.log("Registration failed!");
     }
   });
 }
