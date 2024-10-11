@@ -1,39 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("registration-form");
   const feedbackDiv = document.getElementById("form-feedback");
+
   form.addEventListener("submit", async (event) => {
-    function errormessage(A) {
-      feedbackDiv.innerHTML = `<br> $ Alerttodisplay; `;
-      Alerttodisplay.push(errormessage(A));
-      feedbackDiv.style.color = "#dc3545";
-      isvalid = false;
-    }
     let isvalid = true;
-    if (isvalid === true) {
-      feedbackDiv.style.display = "block";
-      feedbackDiv.style.color = "#28a745";
-    } else {
-      feedbackDiv.style.display = "Block";
-    }
     event.preventDefault();
     const username = form.username.value.trim();
     const password = form.password.value.trim();
     const email = form.email.value.trim();
-    const errormessages = [
-      "Please Enter A valid email",
-      "Please Enter A strong Password it must be over 8 character",
-      "Please enter A valid Username",
-    ];
-    const Alerttodisplay = [];
+    const errorMessages = [];
+    if (!email.includes("@") || !email.includes(".")) {
+      errormessages.push("Please Enter A valid email");
+      isvalid = false;
+    }
+    if (password.length <= 8) {
+      errorMessages.push(
+        "Please Enter A strong Password it must be over 8 character"
+      );
+      isvalid = false;
+    }
+    if (username.length < 3) {
+      errorMessages.push("Please enter A valid Username");
+      isvalid = false;
+    }
 
-    if (!email.includes("@gmail") || !email.includes(".")) {
-      errormessage(0);
-    } else if (password.length <= 8) {
-      errormessage(1);
-    } else if (username.length < 3) {
-      errormessage(2);
+    if (isvalid) {
+      feedbackDiv.textContent = "Registration successful!";
+      feedbackDiv.style.display = "block";
+      feedbackDiv.style.color = "#28a745";
+      errorMessages.length = 0;
+      console.log("Registration successful!");
     } else {
-      feedbackDiv.innerHTML = "Registration successful!";
+      const formattedErrors = errorMessages.join("<br>");
+      feedbackDiv.innerHTML = formattedErrors;
+      feedbackDiv.style.color = "#dc3545";
+      feedbackDiv.style.display = "block";
+      console.log("Registration failed!");
     }
   });
 });
