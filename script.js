@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const feedbackDiv = document.getElementById("form-feedback");
   form.addEventListener("submit", async (event) => {
     function errormessage(A) {
-      feedbackDiv.innerHTML = errormessages[A];
+      feedbackDiv.innerHTML = `<br> $ errormessages[A]; `;
       feedbackDiv.style.color = "#dc3545";
       isvalid = false;
     }
@@ -30,8 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (username.length < 3) {
       errormessage(2);
     } else {
-      feedbackDiv.innerHTML =
-        "<br> Congrats you have been registered Check your email";
+      feedbackDiv.innerHTML = "Registration successful!";
     }
   });
 });
