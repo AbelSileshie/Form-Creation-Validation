@@ -3,7 +3,7 @@ function initializeForm() {
   const feedbackDiv = document.getElementById("form-feedback");
 
   form.addEventListener("submit", async (event) => {
-    let isvalid = true;
+    let isValid = true;
     event.preventDefault();
     const username = form.username.value.trim();
     const password = form.password.value.trim();
@@ -11,17 +11,17 @@ function initializeForm() {
     const messages = [];
     if (!email.includes("@") || !email.includes(".")) {
       messages.push("Please Enter A valid email");
-      isvalid = false;
+      isValid = false;
     }
     if (password.length <= 8) {
       messages.push(
         "Please Enter A strong Password it must be over 8 character"
       );
-      isvalid = false;
+      isValid = false;
     }
     if (username.length < 3) {
       messages.push("Please enter A valid Username");
-      isvalid = false;
+      isValid = false;
     }
   });
 }
