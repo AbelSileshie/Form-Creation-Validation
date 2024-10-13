@@ -28,7 +28,7 @@ function initializeForm() {
       feedbackDiv.textContent = "Registration successful!";
       feedbackDiv.style.display = "block";
       feedbackDiv.style.color = "#28a745";
-      errorMessages.length = 0; // Optional: Clear error messages after successful registration
+      errorMessages.length = 0;
     } else {
       const formattedErrors = errorMessages.join("<br>");
       feedbackDiv.innerHTML = formattedErrors;
