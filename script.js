@@ -3,40 +3,25 @@ function initializeForm() {
   const feedbackDiv = document.getElementById("form-feedback");
 
   form.addEventListener("submit", async (event) => {
+    let isvalid = true;
     event.preventDefault();
-
     const username = form.username.value.trim();
     const password = form.password.value.trim();
     const email = form.email.value.trim();
-
-    let isValid = true;
-    const errorMessages = [];
-
+    const messages = [];
     if (!email.includes("@") || !email.includes(".")) {
-      errorMessages.push("Please Enter A valid email");
-      isValid = false;
+      messages.push("Please Enter A valid email");
+      isvalid = false;
     }
     if (password.length <= 8) {
-      errorMessages.push(
+      messages.push(
         "Please Enter A strong Password it must be over 8 character"
       );
-      isValid = false;
+      isvalid = false;
     }
     if (username.length < 3) {
-      errorMessages.push("Please enter A valid Username");
-      isValid = false;
-    }
-
-    feedbackDiv.style.display = "block";
-
-    if (isValid) {
-      feedbackDiv.textContent = "Registration successful!";
-      feedbackDiv.style.color = "#28a745";
-    } else {
-      const formattedErrors = errorMessages.join("<br>");
-      feedbackDiv.innerHTML = formattedErrors;
-      feedbackDiv.style.color = "#dc3545";
-      console.log("Registration failed!");
+      messages.push("Please enter A valid Username");
+      isvalid = false;
     }
   });
 }
