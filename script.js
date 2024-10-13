@@ -3,37 +3,39 @@ function initializeForm() {
   const feedbackDiv = document.getElementById("form-feedback");
 
   form.addEventListener("submit", async (event) => {
-    let isvalid = true;
     event.preventDefault();
+
     const username = form.username.value.trim();
     const password = form.password.value.trim();
     const email = form.email.value.trim();
+
+    let isValid = true;
     const errorMessages = [];
+
     if (!email.includes("@") || !email.includes(".")) {
       errorMessages.push("Please Enter A valid email");
-      isvalid = false;
+      isValid = false;
     }
     if (password.length <= 8) {
       errorMessages.push(
         "Please Enter A strong Password it must be over 8 character"
       );
-      isvalid = false;
+      isValid = false;
     }
     if (username.length < 3) {
       errorMessages.push("Please enter A valid Username");
-      isvalid = false;
+      isValid = false;
     }
 
-    if (isvalid) {
+    feedbackDiv.style.display = "block";
+
+    if (isValid) {
       feedbackDiv.textContent = "Registration successful!";
-      feedbackDiv.style.display = "block";
       feedbackDiv.style.color = "#28a745";
-      errorMessages.length = 0;
     } else {
       const formattedErrors = errorMessages.join("<br>");
       feedbackDiv.innerHTML = formattedErrors;
       feedbackDiv.style.color = "#dc3545";
-      feedbackDiv.style.display = "block";
       console.log("Registration failed!");
     }
   });

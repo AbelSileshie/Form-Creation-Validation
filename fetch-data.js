@@ -6,7 +6,6 @@ async function fetchUserData() {
     const response = await fetch(apiUrl);
     const users = await response.json();
 
-    // Clear loading message before adding new content
     dataContainer.innerHTML = "";
 
     const userList = document.createElement("ul");
