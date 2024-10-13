@@ -23,6 +23,19 @@ function initializeForm() {
       messages.push("Please enter A valid Username");
       isValid = false;
     }
+
+    if (isValid) {
+      feedbackDiv.textContent = "Registration successful!";
+      feedbackDiv.style.display = "block";
+      feedbackDiv.style.color = "#28a745";
+      messages.length = 0;
+    } else {
+      const formattedErrors = messages.join("<br>");
+      feedbackDiv.innerHTML = formattedErrors;
+      feedbackDiv.style.color = "#dc3545";
+      feedbackDiv.style.display = "block";
+      console.log("Registration failed!");
+    }
   });
 }
 
